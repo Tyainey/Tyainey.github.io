@@ -2,99 +2,136 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>Bouncing Box</title>
-	<script src="jquery.min.js"></script>
-	<style>
-		.box {
-			width: 70px;
-			height: 70px;
-			background-color: teal;
-			font-size: 300%;
-			text-align: center;
-			user-select: none;
-			display: block;
-			position: absolute;
-			top: 100px;
-			/* Change me! */
-			left: 0px;
-		}
+  <meta charset="utf-8">
+  <title>Bouncing Box Game</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .box {
+      width: 70px;
+      height: 70px;
+      background-image: url('data:image/jpeg;base64,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');
+      background-size: cover;
+      background-position: center;
+      font-size: 300%;
+      text-align: center;
+      user-select: none;
+      display: block;
+      position: absolute;
+      top: 100px;
+      left: 0px;
+    }
 
-		.board {
-			height: 100vh;
-		}
-	</style>
-	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+    .board {
+      height: 100vh;
+      position: relative;
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6yHWuLmOgMImgACE7k-IeptqlLAbuMr-o_Q&s');
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
 
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
 </head>
 
 <body class="board">
-	<!-- HTML for the box -->
-	<div class="box">?</div>
+  <div class="box">?</div>
 
-	<script>
-		(function () {
-			'use strict'
-			/* global jQuery */
+  <script>
+    (function () {
+      'use strict'
 
-			//////////////////////////////////////////////////////////////////
-			/////////////////// SETUP DO NOT DELETE //////////////////////////
-			//////////////////////////////////////////////////////////////////
+      var box = jQuery('.box');
+      var board = jQuery('.board');
+      var boardWidth = board.width();
+      var boardHeight = jQuery(window).height();
+      var positionX = 0;
+      var positionY = 100;
+      var speed = 10;
+      var speedY = 3;
+      var points = 0;
+      var misClicks = 0;
 
-			var box = jQuery('.box');	// reference to the HTML .box element
-			var board = jQuery('.board');	// reference to the HTML .board element
-			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
+      var interval = setInterval(update, 50);
 
-			// Every 50 milliseconds, call the update Function (see below)
-			setInterval(update, 50);
+      function moveBoxTo(newPositionX, newPositionY) {
+        box.css("left", newPositionX);
+        box.css("top", newPositionY);
+      }
 
-			// Every time the box is clicked, call the handleBoxClick Function (see below)
-			box.on('click', handleBoxClick);
+      function changeBoxText(newText) {
+        box.text(newText);
+      }
 
-			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
-				box.css("left", newPositionX);
-			}
+      function getRandomColor() {
+        var r = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        return "rgb(" + r + ", " + g + ", " + b + ")";
+      }
 
-			// changes the text displayed on the Box
-			function changeBoxText(newText) {
-				box.text(newText);
-			}
+      function update() {
+        positionX += speed;
+        positionY += speedY;
 
-			//////////////////////////////////////////////////////////////////
-			/////////////////// YOUR CODE BELOW HERE /////////////////////////
-			//////////////////////////////////////////////////////////////////
+        moveBoxTo(positionX, positionY);
 
-			// TODO 2 - Variable declarations 
+        // Horizontal boundary checks
+        if (positionX >= boardWidth - 70 || positionX <= 0) {
+          speed *= -1; // Reverse horizontal speed
+          points++; // Increase points when bouncing off walls
+          changeBoxText(points);
+        }
 
+        // Vertical boundary checks
+        if (positionY >= boardHeight - 70 || positionY <= 0) {
+          speedY *= -1; // Reverse vertical speed
+        }
+      }
 
+      function handleBoxClick() {
+        // If clicked outside the box, count it as a mis-click
+        if (event.target !== box[0]) {
+          misClicks++;
+          if (misClicks >= 10) {
+            endGame();
+            alert("Game Over! Too many mis-clicks.");
+          }
+        }
 
-			/* 
-			This Function will be called 20 times/second. Each time it is called,
-			it should move the Box to a new location. If the box drifts off the screen
-			turn it around! 
-			*/
-			function update() {
+        // Randomize box position on each click
+        positionX = Math.random() * (boardWidth - 70);
+        positionY = Math.random() * (boardHeight - 70);
 
+        points++;
 
-			};
+        // Increase speed more drastically every 3 clicks
+        if (points % 3 === 0) {
+          speed += 5; // Increase the speed significantly
+        }
 
-			/* 
-			This Function will be called each time the box is clicked. Each time it is called,
-			it should increase the points total, increase the speed, and move the box to
-			the left side of the screen.
-			*/
-			function handleBoxClick() {
+        // Set new speed using the formula
+        speed = 3 * points + 10;
 
+        // Change color on each click
+        var newColor = getRandomColor();
+        box.css("background-color", newColor);
 
-			};
+        changeBoxText(points);
+      }
 
+      // End the game by clearing the interval
+      function endGame() {
+        clearInterval(interval); // Stop the game
+      }
 
-
-
-
-		})();
-	</script>
+      // Listen for box clicks
+      box.on('click', handleBoxClick);
+    })();
+  </script>
 </body>
 
 </html>
